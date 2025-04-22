@@ -550,7 +550,7 @@ function displayUsersFromSnapshot(usersArray) {
         const profileImg = document.createElement("img");
         profileImg.classList.add("profile-photo");
         profileImg.addEventListener("click", () => {
-            window.location.href = `profile_of_user?userEmail=${encodeURIComponent(userEmail)}`;
+            window.location.href = `profile_of_user.html?userEmail=${encodeURIComponent(userEmail)}`;
         });
 
         // Create name container
