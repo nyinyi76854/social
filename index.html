@@ -28,9 +28,9 @@
     function handleStartPosting() {
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
-          window.location.href = "post_social";
+          window.location.href = "post_social.html";
         } else {
-          window.location.href = "signin";
+          window.location.href = "signin.html";
         }
       });
     }
