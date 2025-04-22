@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Posting & World wide</title>
-    <link rel="icon" type="image/png" href="falcons_logo.png">
+    <link rel="icon" type="image/png" href="assets/falcons_logo.png">
 
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
@@ -259,64 +259,6 @@ h1 {
     gap: 8px;
 }
 
-/* Ad Container */
-.ad-container {
-    position: fixed; /* Keeps it in place while scrolling */
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 200px; /* Increased from 160px */
-    background: white;
-    padding: 12px;
-    border-radius: 12px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 1000; /* Ensures it stays above other content */
-}
-
-/* Ad Image */
-.ad-image {
-    width: 180px; /* Increased from 150px */
-    height: auto; 
-    border-radius: 10px;
-}
-
-/* Ad Close Button */
-.ad-close-btn {
-    position: absolute;
-    top: -7px;
-    right: -7px;
-    background: white;
-    color: red;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 50%;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
-    transition: 0.3s;
-}
-
-.ad-close-btn:hover {
-    background: #ddd;
-}
-
-/* Ad Text */
-.ad-text {
-    font-size: 16px; /* Increased font size */
-    color: gray;
-    margin-top: 10px;
-}
-
-
-
 
 
 /* Style for the accounts container items */
@@ -412,13 +354,7 @@ video::-webkit-media-controls {
    </style>
 </head>
 <body>
-<div id="adContainer" class="ad-container">
-    <button class="ad-close-btn" onclick="closeAd()">
-        <i class="fas fa-times"></i>
-    </button>
-    <img src="Toyota.png" alt="Toyota Ad" class="ad-image">
-    <p class="ad-text">Ad</p>
-</div>
+
  <div class="accounts-container">
     <div class="search-container">
     <i class="fas fa-search search-icon"></i>
@@ -752,16 +688,7 @@ function displayUsersFromSnapshot(usersArray) {
     document.head.appendChild(style);
 }
 
-function closeAd() {
-    const ad = document.getElementById("adContainer");
-    ad.style.display = "none";
-
-    // Reappear after 10 seconds
-    setTimeout(() => {
-        ad.style.display = "flex";
-    }, 10000);
-}
-        
+ 
 
 function fetchAndDisplayName(email, callback) {
     const namesRef = firestore.collection("names");
@@ -863,7 +790,7 @@ function fetchProfilePhotoForAccount(userEmail, callback) {
         .where("uploaderEmail", "==", userEmail)
         .get()
         .then((querySnapshot) => {
-            let latestPhotoUrl = "profile.png"; // Default profile photo
+            let latestPhotoUrl = "assets/profile.png"; // Default profile photo
             let latestTimestamp = 0;
 
             querySnapshot.forEach((doc) => {
@@ -881,7 +808,7 @@ function fetchProfilePhotoForAccount(userEmail, callback) {
         })
         .catch((error) => {
             console.error("Error fetching profile photo:", error);
-            callback("user_1077114.png"); // Default profile photo on error
+            callback("assets/user_1077114.png"); // Default profile photo on error
         });
 }
 
@@ -901,7 +828,7 @@ function checkVerifiedOrNotForAccount(userEmail, callback) {
         profilesPhotoRef.where("uploaderEmail", "==", userEmail)
             .get()
             .then((querySnapshot) => {
-                let latestPhotoUrl = "user_1077114.png"; // Default profile photo
+                let latestPhotoUrl = "assets/user_1077114.png"; // Default profile photo
                 let latestTimestamp = 0;
 
                 querySnapshot.forEach((doc) => {
@@ -918,7 +845,7 @@ function checkVerifiedOrNotForAccount(userEmail, callback) {
             })
             .catch((error) => {
                 console.error("Error fetching profile photo:", error);
-                callback("user_1077114.png"); // Fallback to default
+                callback("assets/user_1077114.png"); // Fallback to default
             });
     }
 function previewMedia(event) {
@@ -1150,7 +1077,7 @@ function fetchPosts() {
                                     <div style="display: flex; align-items: center;">
                                         <img src="${profilePhotoUrl}" alt="Profile Photo" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
                                         <span style="color: white;">${displayName}</span>
-                                        <img src="verification.png" alt="Verified" class="verified-icon" style="width: 16px; height: 16px; margin-left: 5px; display: ${isVerified ? 'inline' : 'none'};">
+                                        <img src="assets/verification.png" alt="Verified" class="verified-icon" style="width: 16px; height: 16px; margin-left: 5px; display: ${isVerified ? 'inline' : 'none'};">
                                     </div>
                                     ${menuDotHTML}
                                 </div>
