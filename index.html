@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome</title>
+  <link rel="icon" type="image/png" href="falcons_logo.png">
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+  <script>
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyBcTEVvxXmv5N8dJav4xNDRy5hXZRjVeM4",
+      authDomain: "chatflow-59776.firebaseapp.com",
+      projectId: "chatflow-59776",
+      storageBucket: "chatflow-59776.appspot.com",
+      messagingSenderId: "549003131640",
+      appId: "1:549003131640:web:3f4a7b8cef4c0d8a2b990d"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Check auth on button click
+    function handleStartPosting() {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          window.location.href = "post_social";
+        } else {
+          window.location.href = "signin";
+        }
+      });
+    }
+  </script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      text-align: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #splashImage {
+      width: 50%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .footer {
+      color: gray;
+      font-size: 0.9rem;
+      margin: 20px 0;
+    }
+
+    .start-btn {
+      padding: 12px 24px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .start-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <img id="splashImage" src="falcons_logo.png" alt="Splash Image">
+    <button class="start-btn" onclick="handleStartPosting()">Start Posting..</button>
+  </div>
+
+  <div class="footer">Owned by Genix</div>
+</body>
+</html>
