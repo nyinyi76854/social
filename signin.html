@@ -150,7 +150,7 @@
         </div>
         <div class="footer">
             <span>Owned by</span>
-            <img src="genix.png" alt="Genix Logo">
+            <img src="assets/genix.png" alt="Genix Logo">
         </div>
         <div style="text-align: center; margin-top: 10px;">
     <a href="about_falcons.html" style="color: #4facfe; font-size: 14px; text-decoration: none; font-weight: bold;">
@@ -220,7 +220,7 @@ function checkUserInDatabase(email) {
     db.collection("users").where("email", "==", email).get()
         .then((querySnapshot) => {
             if (!querySnapshot.empty) {
-                window.location.href = "post_social";
+                window.location.href = "post_social.html";
             } else {
                 document.getElementById("androidMessage").style.display = "block";
             }
